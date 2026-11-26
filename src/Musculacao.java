@@ -1,4 +1,4 @@
-public class Musculacao extends Exercicio{
+public class Musculacao extends Exercicio implements Progressivo {
     // Aula 02 - Herança e Polimorfismo
 
     private int series;
@@ -39,5 +39,16 @@ public class Musculacao extends Exercicio{
     @Override
     public double calcularGastoCalorico(double pesoAlunoKg) {
         return duracaoMinutos * 6.0;
+    }
+
+    // Aula 03 - Interfaces vs Classes Abstratas
+
+    @Override
+    public double sugerirProximaCarga(int repeticoesAlvo) {
+        boolean atingiuMeta = reps >= repeticoesAlvo;
+        if(atingiuMeta) {
+            return Math.round((cargaKg * 1.05) * 4) / 4.0; // 5% arrendondado pra 0.25kg
+        }
+        return cargaKg;
     }
 }
